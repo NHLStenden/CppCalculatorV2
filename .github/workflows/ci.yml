@@ -14,11 +14,7 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: apt update && sudo apt install -y cmake g++ ninja-build clang-tidy cppcheck
-
-      - name: Configure CMake
-        run: cmake -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-
+        run: apt update && apt install -y cmake g++ ninja-build clang-tidy cppcheck
 
       - name: Checkout repository
         uses: actions/checkout@v3
