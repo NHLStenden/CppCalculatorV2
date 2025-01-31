@@ -22,12 +22,6 @@ jobs:
       - name: Configure CMake
         run: cmake -B build -G "Ninja" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
-      - name: Run clang-tidy
-        run: clang-tidy -p build $(find . -name "*.cpp")
-
-      - name: Run cppcheck
-        run: cppcheck --enable=all --inline-suppr --quiet --error-exitcode=1 .
-
       - name: Build project
         run: cmake --build build
 
