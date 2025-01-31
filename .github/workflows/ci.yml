@@ -13,6 +13,13 @@ jobs:
       image: gcc:latest
 
     steps:
+      - name: Install dependencies
+        run: sudo apt update && sudo apt install -y cmake g++ ninja-build clang-tidy cppcheck
+
+      - name: Configure CMake
+        run: cmake -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
