@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <iomanip>
 #include "Calculator.h"
 #include "Parser.h"
 
@@ -8,26 +9,30 @@ int main() {
     Parser parser;
     Calculator calculator;
     std::string input;
+    bool eofDetected = false;
 
-    std::cout << "Enter an expression (e.g., 5.5 + 3.2) or press Ctrl+D to exit: " << std::endl;
+    while (! eofDetected) {
+        std::getline(std::cin, input);
+        eofDetected = std::cin.eof();
+        if (!eofDetected) {
 
-    while (std::getline(std::cin, input)) {
-        double operand1, operand2;
-        char op;
+            double operand1, operand2;
+            char op;
 
-        if (parser.parse(input, operand1, op, operand2)) {
-            try {
-                double result = calculator.compute(operand1, op, operand2);
-                std::cout << operand1 << " " << op << " " << operand2 << " = " << result << std::endl;
-            } catch (const std::runtime_error& e) {
-                std::cerr << e.what() << std::endl;
+            if (parser.parse(input, operand1, op, operand2)) {
+                try {
+                    double result = calculator.compute(operand1, op, operand2);
+                    std::cout << std::fixed << std::setprecision(3) << operand1 << " " << op << " " << operand2 << " = "
+                              << result << std::endl;
+                } catch (const std::runtime_error &e) {
+                    std::cerr << e.what() << std::endl;
+                }
+            } else {
+                std::cerr << "Invalid input format. Use the format: number operator number (e.g., 5.5 + 3.2)"
+                          << std::endl;
             }
-        } else {
-            std::cerr << "Invalid input format. Use the format: number operator number (e.g., 5.5 + 3.2)" << std::endl;
         }
-        std::cout << "Enter another expression or press Ctrl+D to exit: " << std::endl;
     }
 
-    std::cout << "Goodbye!" << std::endl;
     return 0;
 }
