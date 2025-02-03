@@ -1,6 +1,6 @@
 echo "Running tests"
 $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
-Start-Process -FilePath .\cmake-build-release\CppCalculator -RedirectStandardInput "test-input.txt" -RedirectStandardOutput "test-output.txt" -NoNewWindow -Wait
+Start-Process -FilePath .\cmake-build-release\calculator_exe -RedirectStandardInput "test-input.txt" -RedirectStandardOutput "test-output.txt" -NoNewWindow -Wait
 $stopwatch.Stop()
 $stopwatch.ElapsedMilliseconds
 
