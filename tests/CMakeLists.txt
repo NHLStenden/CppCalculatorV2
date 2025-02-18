@@ -8,7 +8,11 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 # Test-executable aanmaken
-add_executable(calculator_tests test_calculator.cpp)
+add_executable(calculator_tests
+        test_calculator.cpp
+        bulk_tests_division.cpp
+        bulk_tests_multiply.cpp
+        parser_tests.cpp)
 
 # Linken met Google Test en de hoofdcode
 target_link_libraries(calculator_tests PRIVATE calculator gtest gtest_main)
