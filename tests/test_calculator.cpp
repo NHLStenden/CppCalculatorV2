@@ -3,12 +3,21 @@
 #include "../Parser.h"
 
     TEST(CalculatorTest, Addition) {
+        /** Arrange */
         Calculator calculator;
-        EXPECT_DOUBLE_EQ(calculator.compute(2.0, '+', 3.0), 5.0);
+
+        /** Act */
+        double result = calculator.compute(2.0, '+', 3.0)
+
+        /** Assert */
+        EXPECT_DOUBLE_EQ(result, 5.0);
     }
 
 TEST(CalculatorTest, Subtraction) {
+        /** Arrange */
     Calculator calculator;
+
+        /** Act + Assert */
     EXPECT_DOUBLE_EQ(calculator.compute(5.0, '-', 2.0), 3.0);
 }
 
