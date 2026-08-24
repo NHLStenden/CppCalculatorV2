@@ -2,10 +2,10 @@
 #include "../Calculator.h"
 #include "../Parser.h"
 
-    TEST(CalculatorTest, Addition) {
-        Calculator calculator;
-        EXPECT_DOUBLE_EQ(calculator.compute(2.0, '+', 3.0), 5.0);
-    }
+TEST(CalculatorTest, Addition) {
+    Calculator calculator;
+    EXPECT_DOUBLE_EQ(calculator.compute(2.0, '+', 3.0), 5.0);
+}
 
 TEST(CalculatorTest, Subtraction) {
     Calculator calculator;
@@ -24,5 +24,6 @@ TEST(CalculatorTest, Division) {
 
 TEST(CalculatorTest, DivisionByZero) {
     Calculator calculator;
+
     EXPECT_THROW(calculator.compute(10.0, '/', 0.0), std::runtime_error);
 }
